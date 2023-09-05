@@ -15,5 +15,15 @@ def escolhe(qtd): #Função responsável por escolher um item de uma lista/ Impo
         escolhido = random.choice(nomes)   
         if escolhido not in chosen:
             chosen.append(escolhido)      
-    return chosen
+    return print(chosen)
 
+def loop(sec,rps,nomes): #a função loop vai repetir os loops de comentários pedindo tempo entre comentários, ciclops de repetições e a qtd de nomes que vai puxar da lista usando a função escolhe;
+    segundos = sec
+    repslp = rps
+    count = 0
+    while count < repslp:
+        sleep(segundos)
+        escolhe(nomes)
+        count = count +1
+
+loop(5,2,4)
