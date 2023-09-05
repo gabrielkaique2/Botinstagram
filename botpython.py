@@ -14,15 +14,15 @@ sleep(10)
 userLogin = driver.find_element(By.XPATH,"//*[@id='loginForm']/div/div[1]/div/label/input")
 passwordLogin = driver.find_element(By.XPATH,"//*[@id='loginForm']/div/div[2]/div/label/input")
 submitLogin = driver.find_element(By.XPATH,"//*[@id='loginForm']/div/div[3]")
-elogios = ["linda, te amo ","muito bom ","excelente conteúdo ","você é demais ","o vasco é gigante ", "testando robo python "]
+#elogios = ["linda, te amo ","muito bom ","excelente conteúdo ","você é demais ","o vasco é gigante ", "testando robo python "]
 
-userLogin.send_keys("aqui vem o login da conta")
+userLogin.send_keys("rodriguesgabrielxx1999") #Aqui vai o login do user
 sleep(3)
-passwordLogin.send_keys("aqui vem a senha da conta")
+passwordLogin.send_keys("040599gkar") #Aqui vai a senha
 sleep(3)
 submitLogin.submit()
 sleep(5)
-driver.get("aqui vem o post do sorteio no insta")
+driver.get("https://www.instagram.com/p/Cu9sjGfrCQs/") #Aqui vai o post do sorteio
 commentField = WebDriverWait(driver, 10).until(
     EC.element_to_be_clickable((By.XPATH,"//textarea[@aria-label='Adicione um comentário...']"))
 )
