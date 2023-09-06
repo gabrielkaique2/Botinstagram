@@ -16,9 +16,9 @@ passwordLogin = driver.find_element(By.XPATH,"//*[@id='loginForm']/div/div[2]/di
 submitLogin = driver.find_element(By.XPATH,"//*[@id='loginForm']/div/div[3]")
 #elogios = ["linda, te amo ","muito bom ","excelente conteúdo ","você é demais ","o vasco é gigante ", "testando robo python "]
 
-userLogin.send_keys("rodriguesgabrielxx1999") #Aqui vai o login do user
+userLogin.send_keys("#rodriguesgabrielxx1999") #Aqui vai o login do user
 sleep(3)
-passwordLogin.send_keys("040599gkar") #Aqui vai a senha
+passwordLogin.send_keys("#040599gkar") #Aqui vai a senha
 sleep(3)
 submitLogin.submit()
 sleep(5)
