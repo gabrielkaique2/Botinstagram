@@ -6,10 +6,12 @@ from selenium.webdriver.support import expected_conditions as EC;
 import random
 from time import sleep;
 
-driver = webdriver.Edge()
+driver = webdriver.Chrome()
 nomes = ["Miguel", "Arthur", "Gael", "Théo", "Heitor","Ravi","Davi","Bernardo","jovercino","amanda","puta que pariu","joberson","johnny","lucas"] #Raiz IGs
 
-def escolhe(qtd): #Função responsável por escolher um item de uma lista/ Importante quando estivermos tratando os IGs do Instagram;
+#Função responsável por escolher um item de uma lista/ Importante quando estivermos tratando os IGs do Instagram;
+
+def escolhe(qtd): 
     chosen = [] 
     qtd = min(qtd, len(nomes)) # "nomes" é a variável da lista;
     while len(chosen) < qtd:
@@ -18,7 +20,9 @@ def escolhe(qtd): #Função responsável por escolher um item de uma lista/ Impo
             chosen.append(escolhido)      
     return chosen
 
-def loop(sec,rps,nomes): #a função loop vai repetir os loops de comentários pedindo tempo entre comentários, ciclops de repetições e a qtd de nomes que vai puxar da lista usando a função escolhe;
+#a função loop vai repetir os loops de comentários pedindo tempo entre comentários, ciclops de repetições e a qtd de nomes que vai puxar da lista usando a função escolhe;
+
+def loop(sec,rps,nomes): 
     segundos = sec
     repslp = rps
     count = 0
