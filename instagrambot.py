@@ -36,7 +36,7 @@ class InstagramBot():
         #driver.switch_to.frame(iframe)
         sleep(10)
 
-    def Coment(self,nomes):
+    def Coment(self):
         driver = self.driver
             #text_field é a variavel que armazena o XPATH do campo de texto dos comentário.
         text_field = driver.find_element(By.XPATH,'/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[1]/div[2]/section/main/div/div[1]/div/div[2]/div/div[4]/section/div/form/div/textarea')
@@ -47,10 +47,13 @@ class InstagramBot():
         text_field = self.driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[1]/div[2]/section/main/div/div[1]/div/div[2]/div/div[4]/section/div/form/div/textarea')
         sleep(1)
         text_field.send_keys()
+        text_field.send_keys(Keys.RETURN)
 
     def ToChoose(self,set):
+        driver = self.driver
         self.set = set
         #Vai escolher os IG's conforme a lista, de acordo com quantos IG's forem setados
+
         nomes = ["Miguel", "Arthur", "Gael", "Théo", "Heitor","Ravi","Davi","Bernardo","jovercino","amanda","puta que pariu","joberson","johnny","lucas"]
 
         chosen = [] 
@@ -61,7 +64,7 @@ class InstagramBot():
                 chosen.append(escolhido)      
         return chosen
     
-    def loop(self,sec,rps,nomes): 
+    def loop(self,sec,rps): 
         driver = self.driver
         self.sec = sec
         self.rps = rps
@@ -70,7 +73,7 @@ class InstagramBot():
         while count < rps:
             print(count)
             sleep(sec)
-            escolhidos = self.ToChoose(nomes)
+            escolhidos = self.ToChoose("""self.nomes""")
 
             subitComment = WebDriverWait(driver,10).until(
             EC.element_to_be_clickable((By.XPATH,"//*[@id='mount_0_0_wl']/div/div/div[2]/div/div/div/div[1]/div[1]/div[2]/section/main/div/div[1]/div/div[2]/div/div[4]/section/div/form/div/div[2]/div"))
@@ -79,9 +82,11 @@ class InstagramBot():
             
             count = count +1
         return escolhidos
-    
-#bot = InstagramBot('rodriguesgabrielxx1999','040599gkar')
-#bot.Login()
-#bot.GoToLink('https://www.instagram.com/p/BnzzZb_B1gu/')
-#bot.Coment()
-#bot.ToChoose(3)
+
+'''
+bot = InstagramBot('rodriguesgabrielxx1999','040599gkar')
+bot.Login()
+bot.GoToLink('https://www.instagram.com/p/BnzzZb_B1gu/')
+bot.Coment()
+bot.ToChoose(3)
+'''
