@@ -46,16 +46,14 @@ class InstagramBot():
             #após o clique, deve redefinir a variavel text_field com o mesmo XPATH do campo! por algum motivo o webdriver perde a referência da DOM!
         text_field = self.driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[1]/div[2]/section/main/div/div[1]/div/div[2]/div/div[4]/section/div/form/div/textarea')
         sleep(1)
-        text_field.send_keys('Hello, World!')
-
-    def SendComment(self):
-        driver = self.driver
-        
-        pass
+        text_field.send_keys()
+        text_field.send_keys(Keys.RETURN)
 
     def ToChoose(self,set):
+        driver = self.driver
         self.set = set
         #Vai escolher os IG's conforme a lista, de acordo com quantos IG's forem setados
+
         nomes = ["Miguel", "Arthur", "Gael", "Théo", "Heitor","Ravi","Davi","Bernardo","jovercino","amanda","puta que pariu","joberson","johnny","lucas"]
 
         chosen = [] 
@@ -64,12 +62,31 @@ class InstagramBot():
             escolhido = random.choice(nomes)   
             if escolhido not in chosen:
                 chosen.append(escolhido)      
-        return print(chosen)
-        pass
+        return chosen
     
+    def loop(self,sec,rps): 
+        driver = self.driver
+        self.sec = sec
+        self.rps = rps
+        count = 0
+
+        while count < rps:
+            print(count)
+            sleep(sec)
+            escolhidos = self.ToChoose("""self.nomes""")
+
+            subitComment = WebDriverWait(driver,10).until(
+            EC.element_to_be_clickable((By.XPATH,"//*[@id='mount_0_0_wl']/div/div/div[2]/div/div/div/div[1]/div[1]/div[2]/section/main/div/div[1]/div/div[2]/div/div[4]/section/div/form/div/div[2]/div"))
+            )
+            subitComment.click()
+            
+            count = count +1
+        return escolhidos
+
+'''
 bot = InstagramBot('rodriguesgabrielxx1999','040599gkar')
-#bot.Login()
-#bot.GoToLink('https://www.instagram.com/p/BnzzZb_B1gu/')
-#bot.Coment()
+bot.Login()
+bot.GoToLink('https://www.instagram.com/p/BnzzZb_B1gu/')
+bot.Coment()
 bot.ToChoose(3)
-sleep(20)
+'''
