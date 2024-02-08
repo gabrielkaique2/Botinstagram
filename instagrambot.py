@@ -52,19 +52,33 @@ class InstagramBot():
         text_field.send_keys()
         #text_field.send_keys(Keys.RETURN)
 
-    def ToChoose(self,set):
+    def SendComment(self):
         driver = self.driver
-        self.set = set
         
-        #Vai escolher os IG's conforme a lista, de acordo com quantos IG's forem setados
+        #função que encontra o botão de enviar comentário e clica nele para enviar! é necessário separar ele da função getField para não haver problemas de continuidade!
+
+        subitComment = WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.XPATH,"//*[@id='mount_0_0_wl']/div/div/div[2]/div/div/div/div[1]/div[1]/div[2]/section/main/div/div[1]/div/div[2]/div/div[4]/section/div/form/div/div[2]/div")))
+        subitComment.click()
+
+    def ToChoose(self, num_to_choose):
+        #em nomes será adicionado os IG's
         nomes = ["Miguel", "Arthur", "Gael", "Théo", "Heitor","Ravi","Davi","Bernardo","jovercino","amanda","puta que pariu","joberson","johnny","lucas"]
-        chosen = [] 
-        set = min(set, len(nomes)) # "nomes" é a variável da lista;
-        while len(chosen) < set:
+        
+        #verifica se o valor num_to_choose é menor que o comprimento da lista nomes
+        num_to_choose = min(num_to_choose, len(nomes))
+
+        chosen = []
+
+        #escolhe os nomes não adicionados na lista chosen
+        while len(chosen) < num_to_choose:
             escolhido = random.choice(nomes)   
             if escolhido not in chosen:
-                chosen.append(escolhido)      
-        return chosen
+                chosen.append(escolhido)
+
+        # Concatena os elementos da lista chosen em uma única string separada por espaços
+        chosen_string = ' '.join(chosen)
+    
+        return chosen_string
     
     def loop(self,sec,rps): 
         driver = self.driver
@@ -76,14 +90,23 @@ class InstagramBot():
             print(count)
             sleep(sec)
             escolhidos = self.ToChoose("""self.nomes""")
-
+        """
             subitComment = WebDriverWait(driver,10).until(
             EC.element_to_be_clickable((By.XPATH,"//*[@id='mount_0_0_wl']/div/div/div[2]/div/div/div/div[1]/div[1]/div[2]/section/main/div/div[1]/div/div[2]/div/div[4]/section/div/form/div/div[2]/div"))
             )
             subitComment.click()
-            
             count = count +1
         return escolhidos
+        """
+
+    def writer(self,word):
+        driver = self.driver
+        self.word = word
+
+        for char in word:
+            sleep(random.uniform(0.1,1.2))
+            #self.text_field.send_keys(char)
+            #print(char)
 
     def comentar(self,n):
         driver = self.driver
@@ -91,22 +114,7 @@ class InstagramBot():
 
         while True:
             self.Coment(self.ToChoose(n))
-
-
         pass
 
-    def writer(self,word):
-        driver = self.driver
-        self.word = word
-        pass
-
-    
-
-
-'''
-bot = InstagramBot('rodriguesgabrielxx1999','040599gkar')
-bot.Login()
-bot.GoToLink('https://www.instagram.com/p/BnzzZb_B1gu/')
-bot.Coment()
-bot.ToChoose(3)
-'''
+bot =  InstagramBot('11','dsad')
+bot.writer(bot.ToChoose(3))
