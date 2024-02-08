@@ -36,26 +36,28 @@ class InstagramBot():
         #driver.switch_to.frame(iframe)
         sleep(10)
 
-    def Coment(self):
+    #antigo nome Coment() -> novo nome getField()
+    def getField(self,text):
         driver = self.driver
-            #text_field é a variavel que armazena o XPATH do campo de texto dos comentário.
+        self.text = text
+
+        #text_field é a variavel que armazena o XPATH do campo de texto dos comentário.
         text_field = driver.find_element(By.XPATH,'/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[1]/div[2]/section/main/div/div[1]/div/div[2]/div/div[4]/section/div/form/div/textarea')
         sleep(1)
         text_field.click()
         sleep(1)
-            #após o clique, deve redefinir a variavel text_field com o mesmo XPATH do campo! por algum motivo o webdriver perde a referência da DOM!
+        #após o clique, deve redefinir a variavel text_field com o mesmo XPATH do campo! por algum motivo o webdriver perde a referência da DOM!
         text_field = self.driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[1]/div[2]/section/main/div/div[1]/div/div[2]/div/div[4]/section/div/form/div/textarea')
-        sleep(1)
+        #sleep(1)
         text_field.send_keys()
-        text_field.send_keys(Keys.RETURN)
+        #text_field.send_keys(Keys.RETURN)
 
     def ToChoose(self,set):
         driver = self.driver
         self.set = set
+        
         #Vai escolher os IG's conforme a lista, de acordo com quantos IG's forem setados
-
         nomes = ["Miguel", "Arthur", "Gael", "Théo", "Heitor","Ravi","Davi","Bernardo","jovercino","amanda","puta que pariu","joberson","johnny","lucas"]
-
         chosen = [] 
         set = min(set, len(nomes)) # "nomes" é a variável da lista;
         while len(chosen) < set:
@@ -82,6 +84,24 @@ class InstagramBot():
             
             count = count +1
         return escolhidos
+
+    def comentar(self,n):
+        driver = self.driver
+        self.n = n
+
+        while True:
+            self.Coment(self.ToChoose(n))
+
+
+        pass
+
+    def writer(self,word):
+        driver = self.driver
+        self.word = word
+        pass
+
+    
+
 
 '''
 bot = InstagramBot('rodriguesgabrielxx1999','040599gkar')
