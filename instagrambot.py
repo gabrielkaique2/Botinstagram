@@ -118,6 +118,7 @@ class InstagramBot():
             #print(char)
 
     def main(self):
+        #Função principal onde se encontra o comando que realmente faz o código funcionar!
         driver = self.driver
         self.Login()
         self.GoToLink('https://www.instagram.com/p/BnzzZb_B1gu/')
