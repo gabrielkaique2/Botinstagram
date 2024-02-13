@@ -1,8 +1,6 @@
 from selenium import webdriver;
 from selenium.webdriver.common.keys import Keys;
 from selenium.webdriver.common.by import By;
-from selenium.webdriver.support.wait import WebDriverWait;
-from selenium.webdriver.support import expected_conditions as EC;
 import random
 from time import sleep;
 
@@ -61,7 +59,7 @@ class InstagramBot():
 
     def ToChoose(self,num_to_choose):
         # Lista de nomes de usuários do Instagram
-        nomes = ["crisiane_melissas", "eu_fafa_", "naaty._ap", "lai.ribeiroo", "eu_pedagogazi", "danioliveiras22", "admilton.gr", "fatinhaaparecida_", "sanndymarinho", "eusoumah_delgado35"]
+        nomes = ["crisiane_melissas", "eu_fafa_", "naaty._ap", "lai.ribeiroo", "eu_pedagogazi", "danioliveiras22", "admilton.gr", "fatinhaaparecida_", "sanndymarinho", "eusoumah_delgado35", "angelicaviva.nutri", "edutoledo299","lipe_odz", "crispv2021"]
 
         chosen = []
         if num_to_choose <= 1:
@@ -69,6 +67,7 @@ class InstagramBot():
             escolhido_com_arroba = "@" + escolhido
             chosen.append(escolhido_com_arroba)
             chosen_string = ''.join(chosen)
+            print(f"{self}: {chosen_string}")
             return chosen_string
         else:
             num_to_choose = min(num_to_choose, len(nomes))# Escolhe os nomes não adicionados na lista chosen
@@ -81,6 +80,7 @@ class InstagramBot():
             
             # Concatena os elementos da lista chosen em uma única string separada por espaços
             chosen_string = ' '.join(chosen)
+            print(f"{self}: {chosen_string}")
             return chosen_string
 
     def writer(self,word):
@@ -95,8 +95,9 @@ class InstagramBot():
 
     def main(self,cicle,restTime,igs,link):
         #Função principal onde se encontra o comando que realmente faz o código funcionar!
-        #'n' é a quantidade de ciclos
-        #'time' é o intervalo entre envios
+        #'cicle' é a quantidade de ciclos
+        #'restTime' é o intervalo entre envio
+        #'igs' é a quantidade de pessoas que vc quer mencionar por comentário
         #'link' é o link do sorteio
         driver = self.driver
         self.Login()
@@ -111,5 +112,5 @@ class InstagramBot():
             counter += 1
         print(f'{self}: Fim de ciclo')
 
-#bot =  InstagramBot('Gabriel_AutoTester','040599gkar')
-#bot.main(5,30,1,'https://www.instagram.com/p/BLhm1GpAK9V/')
+bot =  InstagramBot('username','userpassword')
+bot.main(10,120,3,'link')
