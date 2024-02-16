@@ -59,7 +59,7 @@ class InstagramBot():
 
     def ToChoose(self,num_to_choose):
         # Lista de nomes de usuários do Instagram
-        nomes = ["crisiane_melissas", "eu_fafa_", "naaty._ap", "lai.ribeiroo", "eu_pedagogazi", "danioliveiras22", "admilton.gr", "fatinhaaparecida_", "sanndymarinho", "eusoumah_delgado35", "angelicaviva.nutri", "edutoledo299","lipe_odz", "crispv2021"]
+        nomes = ["crisiane_melissas", "eu_fafa_", "naaty._ap", "lai.ribeiroo", "eu_pedagogazi", "danioliveiras22", "admilton.gr", "fatinhaaparecida_", "sanndymarinho", "eusoumah_delgado35", "_ange26", "edutoledo299","lipe_odz", "crispv2021","patricialopes5451","sandradossantos7635","manuella_nawane_1308","lais_051993","olindinamarlene1955_ms"]
 
         chosen = []
         if num_to_choose <= 1:
@@ -112,5 +112,5 @@ class InstagramBot():
             counter += 1
         print(f'{self}: Fim de ciclo')
 
-bot =  InstagramBot('username','userpassword')
-bot.main(10,120,3,'link')
+bot =  InstagramBot('username','password')
+bot.main('cicles','rest time','@s','link do sorteio')
