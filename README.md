@@ -17,14 +17,15 @@ Este projeto é um bot automatizado desenvolvido com **Python** e **Selenium** q
 
 ## 💡 Como usar
 
-1. Clone o repositório:
-```bash
+Clone o repositório:
+```
 git clone https://github.com/seu-usuario/nome-do-repositorio.git
 
-2. Instale as dependências:
+Instale as dependências:
 pip install -r requirements.txt
 
-3. Em uma IDE ou por linha de comando, execute o arquivo instagrambot.py
+Em uma IDE ou por linha de comando, execute o arquivo instagrambot.py
+```
 
 Observação
 Este bot é apenas para fins educacionais. Automatizar interações pode violar os termos de uso de alguns sites. Use com responsabilidade.
